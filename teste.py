@@ -54,3 +54,22 @@ def cliente():
         session['banco'] = request.form['banco']
         return redirect(url_for('perguntas'))
     return render_template('cliente.html')
+
+@app.route('/perguntas', methods=['GET', 'POST'])
+def perguntas():
+    if request.method == 'POST':
+        respostas = {
+            'resposta1': request.form.get('resposta1'),
+            'resposta2': request.form.get('resposta2'),
+            'resposta3': request.form.get('resposta3'),
+            'resposta4': request.form.get('resposta4')
+        }
+
+        if None in respostas.values():
+            return render_template('perguntas.html', error="Por favor, selecione uma resposta para todas as perguntas.")
+
+        perfil, sugestoes = calcular_perfil_investidor(respostas)
+        session['perfil'] = perfil
+        session['sugestoes'] = sugestoes
+        return redirect(url_for('resultado'))
+    return render_template('perguntas.html')
