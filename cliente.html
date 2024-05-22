@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Informações do Cliente</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Informe seus dados</h1>
+        </div>
+    </header>
+    <div class="container">
+        <p >Antes de inciarmos, informe seus dados para que possamos escolher as melhores opções de investimento para você!</p>
+    </div>
+    <div class="container">
+        <form action="{{ url_for('cliente') }}" method="post" class="form-container">
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="sobrenome">Sobrenome:</label>
+                <input type="text" id="sobrenome" name="sobrenome" required>
+            </div>
+            <div class="form-group">
+                <label for="data_nascimento">Data de Nascimento:</label>
+                <input type="date" id="data_nascimento" name="data_nascimento" required>
+            </div>
+            <div class="form-group">
+                <label for="banco">Banco:</label>
+                <input type="text" id="banco" name="banco" required>
+            </div>
+            <button type="submit" class="btn">Enviar</button>
+        </form>
+    </div>
+    <script>
+        // Define o valor máximo do campo de data de nascimento para a data atual
+        document.addEventListener("DOMContentLoaded", function() {
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); // Janeiro é 0
+            var yyyy = today.getFullYear();
+            today = yyyy + '-' + mm + '-' + dd;
+            document.getElementById("data_nascimento").setAttribute("max", today);
+        });
+    </script>
+</body>
+</html>
