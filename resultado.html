@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultado do Perfil Investidor</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Resultado do Perfil Investidor</h1>
+        </div>
+    </header>
+    <div class="container">
+        <p>Excelente, <strong>{{ nome }} {{ sobrenome }}</strong>! De acordo com suas respostas,</p>
+        <p>Seu perfil de investidor é: <strong>{{ perfil }}</strong></p>
+        <p>Com base no seu perfil, iremos fazer algumas sugestões de investimento que se adequaria às suas pretenções!</p>
+        <p>Segue abaixo:</p>
+        <ul>
+            {% for sugestao in sugestoes %}
+                <li>{{ sugestao }}</li>
+            {% endfor %}
+        </ul>
+        <a href="/" class="btn">Recomeçar</a>
+    </div>
+</body>
+</html>
