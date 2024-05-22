@@ -1,3 +1,4 @@
+#Importando Bibliotecas e calculando pesos nas perguntas (Luiz)
 from flask import Flask, render_template, request, redirect, url_for, session
 
 app = Flask(__name__)
@@ -28,7 +29,9 @@ def calcular_perfil_investidor(respostas):
     if respostas['resposta4'] == "a":
         pontuacao -= 1
     elif respostas['resposta4'] == "c":
-        pontuacao += 1
+         pontuacao += 1
+        
+#Calculando condições de cada tipo de Perfil (Ana)
 if pontuacao <= 0:
         perfil = "Conservador"
         sugestoes = "Fundos de Renda fixa;","Poupança;","Tesouro Direto (Tesouro Selic);","CDBs (Certificados de Depósito Bancário) de bancos grandes;","LCIs e LCAs (Letras de Crédito Imobiliário e do Agronegócio)."
