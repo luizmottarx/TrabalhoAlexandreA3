@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Perguntas do Perfil Investidor</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Responda às Perguntas</h1>
+        </div>
+    </header>
+    <div class="container">
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        <form action="{{ url_for('perguntas') }}" method="post">
+            <div class="question">
+                <p>1. O que você prioriza na hora de investir?</p>
+                <input type="radio" id="resposta1a" name="resposta1" value="a" required>
+                <label for="resposta1a">Rentabilidade e diversificação</label><br>
+                <input type="radio" id="resposta1b" name="resposta1" value="b" required>
+                <label for="resposta1b">Segurança e tranquilidade</label><br>
+            </div>
+
+            <div class="question">
+                <p>2. Qual o seu principal objetivo ao investir?</p>
+                <input type="radio" id="resposta2a" name="resposta2" value="a" required>
+                <label for="resposta2a">Proteger meu capital e ter retornos estáveis, mesmo que sejam baixos</label><br>
+                <input type="radio" id="resposta2b" name="resposta2" value="b" required>
+                <label for="resposta2b">Buscar retornos consistentes, com um equilíbrio entre risco e retorno</label><br>
+                <input type="radio" id="resposta2c" name="resposta2" value="c" required>
+                <label for="resposta2c">Alcançar alta rentabilidade, mesmo que isso signifique assumir mais riscos</label><br>
+            </div>
+
+            <div class="question">
+                <p>3. Qual o seu nível de tolerância ao risco?</p>
+                <input type="radio" id="resposta3a" name="resposta3" value="a" required>
+                <label for="resposta3a">Prefiro investimentos com baixo risco, mesmo que isso signifique retornos menores</label><br>
+                <input type="radio" id="resposta3b" name="resposta3" value="b" required>
+                <label for="resposta3b">Me sinto confortável com investimentos que apresentam algum risco, desde que o potencial de retorno seja interessante</label><br>
+                <input type="radio" id="resposta3c" name="resposta3" value="c" required>
+                <label for="resposta3c">Estou disposto a assumir riscos maiores em busca de retornos mais altos</label><br>
+            </div>
+
+            <div class="question">
+                <p>4. Como você se sentiria se o valor do seu investimento oscilasse significativamente no curto prazo?</p>
+                <input type="radio" id="resposta4a" name="resposta4" value="a" required>
+                <label for="resposta4a">Ficaria muito preocupado e poderia até retirar meu dinheiro do investimento</label><br>
+                <input type="radio" id="resposta4b" name="resposta4" value="b" required>
+                <label for="resposta4b">Me sentiria desconfortável, mas provavelmente manteria meu investimento</label><br>
+                <input type="radio" id="resposta4c" name="resposta4" value="c" required>
+                <label for="resposta4c">Me manteria calmo e confiante, pois acredito no potencial do investimento a longo prazo</label><br>
+            </div>
+
+            <button type="submit" class="btn2">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>
