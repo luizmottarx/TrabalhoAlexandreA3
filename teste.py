@@ -31,7 +31,7 @@ def calcular_perfil_investidor(respostas):
     elif respostas['resposta4'] == "c":
          pontuacao += 1
         
-#Calculando condições de cada tipo de Perfil (Ana)
+#Calculando condições de cada tipo de Perfil de acordo com os pesos definidos (Ana)
 if pontuacao <= 0:
         perfil = "Conservador"
         sugestoes = "Fundos de Renda fixa;","Poupança;","Tesouro Direto (Tesouro Selic);","CDBs (Certificados de Depósito Bancário) de bancos grandes;","LCIs e LCAs (Letras de Crédito Imobiliário e do Agronegócio)."
@@ -47,7 +47,8 @@ if pontuacao <= 0:
 @app.route('/')
 def index():
     return render_template('index.html')
-
+    
+#Requisição de formulário do usuário, e testa condição de validações com campos obrigatórios e salva respostas (Ricardo)
 @app.route('/cliente', methods=['GET', 'POST'])
 def cliente():
     if request.method == 'POST':
