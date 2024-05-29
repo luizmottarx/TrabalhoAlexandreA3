@@ -6,18 +6,26 @@ app.secret_key = 'sua_chave_secreta'
 
 def calcular_perfil_investidor(respostas):
     pontuacao = 0
+
+#As pontuações abaixos dizem como será calculado os perfis de investimento. A lógica é somar pontos e subtrair pontos.
     
+    #Resposta1 = Somar 1 ponto caso A selecionado / Subtrair 1 ponto caso B selecionado
+
     if respostas['resposta1'] == "a":
         pontuacao += 1
     elif respostas['resposta1'] == "b":
         pontuacao -= 1
-
+        
+    #Resposta2 = Subtrair 1 ponto caso A selecionado / Somar 1 ponto caso B selecionado / Somar 2 pontos caso C selecionado
+    
     if respostas['resposta2'] == "a":
         pontuacao -= 1
     elif respostas['resposta2'] == "b":
         pontuacao += 1
     elif respostas['resposta2'] == "c":
         pontuacao += 2
+        
+    #Resposta3 = Subtrair 1 ponto caso A selecionado / Somar 1 ponto caso B selecionado / Somar 2 pontos caso C selecionado
 
     if respostas['resposta3'] == "a":
         pontuacao -= 1
@@ -26,12 +34,14 @@ def calcular_perfil_investidor(respostas):
     elif respostas['resposta3'] == "c":
         pontuacao += 2
 
+    #Resposta4 = Subtrair 1 ponto caso A selecionado / Somar 1 ponto caso C selecionado
+
     if respostas['resposta4'] == "a":
         pontuacao -= 1
     elif respostas['resposta4'] == "c":
          pontuacao += 1
         
-#Calculando condições de cada tipo de Perfil de acordo com os pesos definidos (Ana)
+#Calculando condições de cada tipo de Perfil de acordo com os pesos definidos
 if pontuacao <= 0:
         perfil = "Conservador"
         sugestoes = "Fundos de Renda fixa;","Poupança;","Tesouro Direto (Tesouro Selic);","CDBs (Certificados de Depósito Bancário) de bancos grandes;","LCIs e LCAs (Letras de Crédito Imobiliário e do Agronegócio)."
@@ -48,7 +58,7 @@ if pontuacao <= 0:
 def index():
     return render_template('index.html')
     
-#Requisição de formulário do usuário, e testa condição de validações com campos obrigatórios e salva respostas (Ricardo)
+#Requisição de formulário do usuário, e testa condição de validações com campos obrigatórios e salva respostas
 @app.route('/cliente', methods=['GET', 'POST'])
 def cliente():
     if request.method == 'POST':
